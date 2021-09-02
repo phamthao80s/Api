@@ -9,7 +9,7 @@ using TodoApi.Models;
 
 namespace Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("TodoItems")]
     [ApiController]
     public class TodoItemsController : ControllerBase
     {

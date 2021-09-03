@@ -86,7 +86,8 @@ namespace Api.Controllers
         ///     }
         ///
         /// </remarks>
-        /// /// <param name="item"></param>
+        /// <param name="todoItemDTO"></param>
+        /// /// 
         /// <returns>A newly created TodoItem</returns>
         /// <response code="201">Returns the newly created item</response>
         /// <response code="400">If the item is null</response>   

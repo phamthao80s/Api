@@ -7,8 +7,8 @@ using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using TodoApi.Models;
 using System;
-
-
+using System.Reflection;
+using System.IO;
 
 namespace TodoApi
 {
@@ -48,6 +48,10 @@ namespace TodoApi
                         Url = new Uri("https://example.com/license"),
                     }
                 });
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+
             });
             //services.AddSwaggerGen(c =>
             //{

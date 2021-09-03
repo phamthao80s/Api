@@ -10,6 +10,7 @@ using TodoApi.Models;
 
 namespace Api.Controllers
 {
+    [Produces("application/json")]
     [Route("TodoItems")]
     [ApiController]
     public class TodoItemsController : ControllerBase
@@ -85,8 +86,14 @@ namespace Api.Controllers
         ///     }
         ///
         /// </remarks>
+        /// /// <param name="item"></param>
+        /// <returns>A newly created TodoItem</returns>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response>   
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<TodoItemDTO>> CreateTodoItem(TodoItemDTO todoItemDTO)
         {
             var todoItem = new TodoItem

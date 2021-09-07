@@ -72,6 +72,7 @@ namespace Api.Controllers
 
             return NoContent();
         }
+
         /// <summary>
         /// Creates a TodoItem.
         /// </summary>
@@ -87,11 +88,9 @@ namespace Api.Controllers
         ///
         /// </remarks>
         /// <param name="todoItemDTO"></param>
-        /// /// 
         /// <returns>A newly created TodoItem</returns>
         /// <response code="201">Returns the newly created item</response>
-        /// <response code="400">If the item is null</response>   
-
+        /// <response code="400">If the item is null</response>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -111,6 +110,7 @@ namespace Api.Controllers
                 new { id = todoItem.Id },
                 ItemToDTO(todoItem));
         }
+
         /// <summary>
         /// Deletes a specific TodoItem.
         /// </summary>
@@ -142,5 +142,4 @@ namespace Api.Controllers
                 IsComplete = todoItem.IsComplete
             };
     }
-    }
-
+}

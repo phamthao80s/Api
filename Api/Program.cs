@@ -1,25 +1,15 @@
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+var builder = WebApplication.CreateBuilder(args);
 
-namespace TodoApi
-{
-#pragma warning disable CS1591
-    public class Program
-    {
-        public static void Main(string[] args) =>
-            BuildWebHost(args).Run();
+builder.Services.AddControllers();
+builder.Services.AddDbContext<TodoContext>(opt => opt.UseInMemoryDatabase("TodoList"));
+builder.Services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "TodoApi", Version = "v1" }));
 
-        public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
-                .Build();
-    }
-#pragma warning restore CS1591
-}
+var app = builder.Build();
+
+app.UseSwagger();
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Api v1"));
+
+app.UseHttpsRedirection();
+app.UseAuthorization();
+
+app.Run();

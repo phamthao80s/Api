@@ -1,9 +1,3 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Models;
-using TodoApi.Models;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
